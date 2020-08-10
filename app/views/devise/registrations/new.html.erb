@@ -1,0 +1,63 @@
+		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+ 
+		<div class="text-center">	
+			<h2 class="pt-150">Sign up</h2>
+			<%= form_for(resource, as: resource_name,:id => "newUser", url: registration_path(resource_name)) do |f| %>
+			<%= render "devise/shared/error_messages", resource: resource %>
+
+			<div class="field">
+				<%= f.label :email %><br />
+				<%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+			</div>
+
+			<div class="field">
+				<%= f.label :password %>
+				<% if @minimum_password_length %>
+				<em>(<%= @minimum_password_length %> characters minimum)</em>
+				<% end %><br />
+				<%= f.password_field :password, autocomplete: "new-password" %>
+			</div>
+
+			<div class="field">
+				<%= f.label :password_confirmation %><br />
+				<%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+			</div>
+			<div class="row pt-20">
+				<div class="col-3">
+				</div>
+				<div class="col-2 g-recaptcha" data-sitekey="<%=ENV["RECAPTCHA_SITE_KEY"]%>" data-callback="recaptchaCallback">
+					
+				</div>
+				<div class="col-2">
+					<div class="actions">
+						<button class="btn btn-dark btn-lg mt-12" id="submitBtn" disabled>Submit</button>
+					</div>
+				</div>
+				<div class="col-5">
+				</div>
+			</div>
+			<% end %>
+
+			<%= render "devise/shared/links" %>
+			</section>
+		</div>
+
+		<script type="text/javascript">
+			var recaptchachecked;
+			function recaptchaCallback() {
+				$("#submitBtn").removeClass("btn-dark");
+				$('#submitBtn').removeAttr('disabled');
+            	$("#submitBtn").addClass("btn-primary");
+				
+				//If we managed to get into this function it means that the user checked the checkbox.
+				recaptchachecked = true;
+			}
+		</script>
+		
+		
+		
+        <script>var plugin_path = 'assets/plugins/';</script>
+        <%= javascript_include_tag 'contact', media: 'all', 'data-turbolinks-track': 'reload' %>
+	    <%= javascript_include_tag 'scripts', media: 'all', 'data-turbolinks-track': 'reload' %>
+	
+

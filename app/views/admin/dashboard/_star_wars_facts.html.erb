@@ -1,0 +1,53 @@
+  <% # STAR WARS FACTS
+  require "ibm_watson/authenticators"
+  require "ibm_watson/text_to_speech_v1"
+  require "httparty"
+  require "json"
+
+
+ randomCounter = rand(1..60)
+  randoCounter = rand(1..7)
+  sw = HTTParty.get("https://swapi.dev/api/planets/#{randomCounter}/")
+
+  case randoCounter
+  when 1
+    star_wars_facts = "The diameter of planet #{sw["name"]} is #{sw["diameter"]}"
+  when 2
+    star_wars_facts = "The rotation period of planet #{sw["name"]} is #{sw["rotation_period"]} hours"
+  when 3
+    star_wars_facts = "The orbital period of planet #{sw["name"]} is #{sw["orbital_period"]} days"
+  when 4
+    star_wars_facts = "The gravity of planet #{sw["name"]} is #{sw["gravity"]}"
+  when 5
+    star_wars_facts = "The population of planet #{sw["name"]} is #{sw["population"]}"
+  when 6
+    star_wars_facts = "The climate of planet #{sw["name"]} is #{sw["climate"]}"
+  when 7
+    star_wars_facts = "The terrain of planet #{sw["name"]} is #{sw["terrain"]}"
+  else 
+    star_wars_facts = "oops error with random switch case"
+  end
+    
+
+  authenticator = IBMWatson::Authenticators::IamAuthenticator.new(
+    apikey: ENV["IBM_API_KEY"]
+  )
+  text_to_speech = IBMWatson::TextToSpeechV1.new(
+    authenticator: authenticator
+)
+  text_to_speech.service_url = ENV["IBM_URL"]
+
+
+  File.open("./public/star_wars_facts.wav", "wb") do |audio_file|
+    response = text_to_speech.synthesize(
+      text:"#{star_wars_facts}",
+      accept: "audio/wav",
+      voice: "en-GB_KateV3Voice"
+    )
+    audio_file.write(response.result)
+  end %>
+
+<audio controls preload="metadata" style=" width:100%;">
+    <source src="/star_wars_facts.wav" type="audio/wav">
+    Your browser does not support the audio element.
+</audio><br /> 

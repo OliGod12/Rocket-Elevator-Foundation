@@ -1,0 +1,14 @@
+class CreateIntervention < ActiveRecord::Migration[5.2]
+    def self.up
+      create_table :interventions do |t|
+        t.datetime :start_of_intervention
+        t.datetime :end_of_intervention
+        t.text :result
+        t.text :report
+        t.text :status
+        t.references :elevator, foreign_key: true
+        t.timestamps
+      end
+    end
+  end
+  

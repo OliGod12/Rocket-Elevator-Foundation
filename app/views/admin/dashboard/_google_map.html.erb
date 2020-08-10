@@ -1,0 +1,108 @@
+
+<div id="map" style="width: 100%; height: 600px;"></div>
+<div class="testing"></div>
+<script async defer
+
+        src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_API']%>&callback=initMap&libraries=&v=weekly"
+></script>
+<script type="text/javascript">
+    var map;
+    function initMap() {
+    map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: 34.2392116, lng: -84.19558549999999 },
+        zoom: 8
+    });
+    
+    <% Building.all.each do |building| 
+        nbElevators = 0 
+        nbColumn = 0
+        nbFloor = 0
+        nbBattery = building.battery.count
+        building.battery.all.each do |battery|
+            nbColumn += battery.column.count
+            battery.column.all.each do |column|
+                nbFloor = column.number_of_floors
+                nbElevators += column.elevator.count
+            end
+        end 
+        
+        if nbBattery == 0 %>
+            var markers = 
+            {
+                coords:{lat: <%= building.address.latitude%>, lng: <%= building.address.longitude %>},
+                content:'<h6><%=building.address.number_and_street%><br><br>Client name: <%=building.admin_full_name%>.<br><br>This is the home address of the client<br><br>',
+            }
+            addMarker(markers, <%=nbBattery%>)
+        <%    next
+        else %>
+        var markers = 
+            {
+                coords:{lat: <%= building.address.latitude%>, lng: <%= building.address.longitude %>},
+
+                content:'<h6><%=building.address.number_and_street%><br><br>Number of floors: <%=nbFloor%>.<br><br>Client name: <%=building.admin_full_name%>.<br><br>Number of Batteries: <%=nbBattery%>.<br><br>Number of Columns: <%=nbColumn%>.<br><br>Number of Elevators: <%=nbElevators%>.<br><br>Full name of technical contact: <%=building.full_name_STA%><br><br>',
+
+            }
+        addMarker(markers, <%=nbBattery%>)
+        
+        
+       
+    <% 
+        end  
+    end %>
+    
+    function weatherBalloon( lat, lon, point) {
+        var key = '<%= ENV['OPEN_WEATHER_API'] %>';
+        fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&appid=' + key + '&units=metric')  
+        .then(function(resp) { return resp.json() }) // Convert data to json
+        .then(function(data) {
+        console.log(data.main.temp);
+        console.log("BEans")
+        console.log(point.content)
+        var get_content = point.content
+        console.log(get_content)
+        point.setContent( get_content + "Temperature: " + data.main.temp + " °C </h6>")
+        })
+        .catch(function(bat) {
+            console.log(bat)
+        // catch any errors
+        });
+    }
+
+    function addMarker(props, nbBatt){
+        if (nbBatt == 0) {
+            var marker = new google.maps.Marker({
+                position:props.coords,
+                map:map,
+                icon: "<%= ActionController::Base.helpers.image_url('client_house.png') %>",
+            });
+        }else {
+            var marker = new google.maps.Marker({
+                position:props.coords,
+                map:map,
+                icon: "<%= ActionController::Base.helpers.image_url('favicon.png') %>",
+            });
+        }
+        
+        // Check content
+        if(props.content){
+
+        let infoWindow
+          marker.addListener('click', function(){
+            if (infoWindow !== undefined){
+                infoWindow.close();
+            }
+            infoWindow = new google.maps.InfoWindow({
+            content:props.content
+          });
+            weatherBalloon(marker.getPosition().lat(), marker.getPosition().lng(), infoWindow)
+            infoWindow.open(map, marker);
+          });
+        }
+      }
+    }
+
+</script>
+
+
+        <%# window.onload = function() {
+        weatherBalloon( 6167865 ); %>

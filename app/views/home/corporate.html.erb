@@ -1,0 +1,218 @@
+		
+			
+		
+			<section class="fullwidthbanner-container">
+				<%= image_tag("CorporateHome.jpeg", :style => "width:100%;filter: brightness(50%)", :alt => "", :class => "fullwidth,  ") %>
+			</section>
+			<!-- /Residential Home -->
+
+			<!-- Welcome -->
+			<section>
+				<div class="container">
+
+
+					<div class="text-center">
+						<h1>Welcome dear <span>clients</span>, to our commercial & corporate products.</h1>
+						<h2 class="col-sm-10 offset-sm-1 mb-0 fw-400">Take a look at our trendy, quiet & peaceful products.</h2>
+					</div>
+
+				</div>
+			</section>
+			<!-- Welcome -->
+
+
+<!-- Services -->
+<section id="services">
+	<div class="container">
+		<div class="heading-title heading-dotted text-center">
+			<h2>Our Commercial and Corporate Products</h2>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-4">
+				<%= image_tag("CorporateHydraulic.jpeg", :alt => "", :width => "300", :height => "300") %>
+				<h3 class="mt-10"> Hydraulic Elevators</h3>
+				<p>Hydraulic systems have a fluid-driven piston mounted inside of a cylinder that lifts the cab. These elevators are best for low-rise buildings no more than five stories tall. </p>
+				<a href="https://www.ascensionelevators.com/services/types-advantages-of-roped-hydraulic-elevator-systems/" class="btn btn-info">Get more info</a>
+				
+			</div>
+
+			<div class="col-sm-4">
+				<%= image_tag("MachineRoomLess.jpg", :alt => "", :width => "300", :height => "300") %>
+				<h3 class="mt-10"> Machine Room-Less </h3>
+				<p>Either traction or hydraulic, MRL commercial elevators don’t require a machine room. This can create more space in your building and requires less energy to operate.
+
+				</p>
+				<a href="https://www.vacuumelevators.com/principles-components/" class="btn btn-info">Get more info</a>
+			</div>
+
+			<div class="col-sm-4">
+				<%= image_tag("Traction.jpg", :alt => "", :width => "300", :height => "300") %>
+				<h3 class="mt-10">Traction  Elevators </h3>
+				<p>Traction elevators are the most common type of elevators. Elevator cars are pulled up by means of rolling steel ropes over a deeply grooved pulley, commonly called a sheave in...
+				</p>
+				<a href="https://elevation.fandom.com/wiki/Traction_elevators" class="btn btn-info">Get more info</a>
+			</div>
+
+		</div>
+
+	</div>
+</section>
+<!-- /Services -->
+
+
+
+
+<!-- FOOTER -->
+<footer id="footer">
+	<div class="container">
+
+
+		<div class="row">
+
+			<!-- col #1 -->
+			<div class="col-md-8">
+
+				<h3 class="letter-spacing-1">WHY US?</h3>
+
+				<!-- Small Description -->
+				<p>
+					Rocket Elevators is offering you the best elevators and services that you can find on the market. Also, our prices are inevitably unbeatable .
+				</p>
+				<h2>1(581) 701-0303</h2>
+			</div>
+			<!-- /col #1 -->
+
+			<!-- col #2 -->
+			<div class="col-md-4">
+				<h3 class="letter-spacing-1">KEEP IN TOUCH</h3>
+
+				<!-- Newsletter Form -->
+				<p>Subscribe to Our Newsletter to get Important News & Offers</p>
+
+				<form class="validate" action="php/newsletter.php" method="post" data-success="Subscribed! Thank you!" data-toastr-position="bottom-right">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+						<input type="email" id="email" name="email2" class="form-control required" placeholder="Enter your Email">
+						<span class="input-group-btn">
+							<a href="thankyou" class="btn btn-success">Subscribe</a>
+						</span>
+					</div>
+				</form>
+				<!-- /Newsletter Form -->
+
+
+			</div>
+			<!-- /col #2 -->
+
+		</div>
+
+
+	</div>
+
+	<div class="copyright">
+		<div class="container">
+			<ul class="float-right m-0 list-inline mobile-block">
+
+				<style>
+					/* Popup container - can be anything you want */
+					.popup {
+					  position: relative;
+					  display: inline-block;
+					  cursor: pointer;
+					  -webkit-user-select: none;
+					  -moz-user-select: none;
+					  -ms-user-select: none;
+					  user-select: none;
+					}
+					
+					/* The actual popup */
+					.popup .popuptext {
+					  visibility: hidden;
+					  width: 160px;
+					  background-color: #555;
+					  color: #fff;
+					  text-align: center;
+					  border-radius: 6px;
+					  padding: 8px 0;
+					  position: absolute;
+					  z-index: 1;
+					  bottom: 125%;
+					  left: 50%;
+					  margin-left: -80px;
+					}
+					
+					/* Popup arrow */
+					.popup .popuptext::after {
+					  content: "";
+					  position: absolute;
+					  top: 100%;
+					  left: 50%;
+					  margin-left: -5px;
+					  border-width: 5px;
+					  border-style: solid;
+					  border-color: #555 transparent transparent transparent;
+					}
+					
+					/* Toggle this class - hide and show the popup */
+					.popup .show {
+					  visibility: visible;
+					  -webkit-animation: fadeIn 1s;
+					  animation: fadeIn 1s;
+					}
+					
+					/* Add animation (fade in the popup) */
+					@-webkit-keyframes fadeIn {
+					  from {opacity: 0;} 
+					  to {opacity: 1;}
+					}
+					
+					@keyframes fadeIn {
+					  from {opacity: 0;}
+					  to {opacity:1 ;}
+					}
+					</style>
+				<li><div class="popup" onclick="myFunction()">Terms &amp; Conditions
+				<span class="popuptext" id="myPopup">Other than the content you own, under these Terms, Company Name and/or its licensors own all the intellectual property rights and materials contained in this Website.<br>You are granted limited license only for purposes of viewing the material contained on this Website.</span>
+				</div></li>
+					<li></li>
+					<li></li>
+					<li>&bull;</li>
+					<li></li>
+					<li></li>
+				<li><div class="popup" onclick="pop2()">Privacy
+				<span class="popuptext" id="popMy">Log and usage data. We may log information when you access and use the Services.<br> This may include your IP address, user-agent string, browser type, operating system, referral URLs, device information (e.g., device IDs), pages visited, links clicked, the requested URL, hardware settings, and search terms. <br> Except for the IP address used to create your account, Rocket Elevators Ltd will delete any IP addresses collected after 100 days.</span>
+				</div></li>
+			</ul>
+			&copy; All Rights Reserved, Company LTD
+		</div>
+	</div>
+
+</footer>
+<!-- /FOOTER -->
+
+		</div>
+		<!-- /wrapper -->
+
+
+		<!-- SCROLL TO TOP -->
+		<a href="#" id="toTop"></a>
+		<!-- POPUP SCRIPTS -->
+		<script>
+			// When the user clicks on div, open the popup
+				function myFunction() {
+				var popup = document.getElementById("myPopup");
+				popup.classList.toggle("show");
+			}
+			// When the user clicks on div, open the popup
+			function pop2() {
+				var popup = document.getElementById("popMy");
+				popup.classList.toggle("show");
+			}
+		</script>
+		<script>var plugin_path = 'assets/plugins/';</script>
+		<%= javascript_include_tag 'contact', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'scripts', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+	</body>
+</html>

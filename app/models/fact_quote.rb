@@ -1,0 +1,2 @@
+class FactQuote < WarehouseBase
+end

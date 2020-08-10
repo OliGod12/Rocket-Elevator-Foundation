@@ -1,0 +1,2 @@
+class FactElevator < WarehouseBase
+end

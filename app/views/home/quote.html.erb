@@ -1,0 +1,413 @@
+			<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+			<%= form_tag home_path, :id => 'elm_id' do %>
+				<div class="text-center ">
+					<div class="m-20">
+						<div class="select-rm">
+								<input  type="button" class="btn btn-default build-type" id="buildingResidential" value="residential" name="typeBuilding">
+								<input  type="button" class="btn btn-default build-type" id="buildingCommercial" value="commercial" name="typeBuilding">
+								<input  type="button" class="btn btn-default build-type" id="buildingCorporate" value="corporate" name="typeBuilding">
+								<input  type="button" class="btn btn-default build-type" id="buildingHybrid" value="hybrid" name="typeBuilding">
+								<input  type="hidden" id="resultBuilding" name="tipe">
+						</div>
+					</div>
+				</div>
+
+					
+
+				<div class="container" >
+					<div class="row q-hide" id="q-door">
+						<div class="col-6 text-right">
+							<p id="numDoorText">Number of appartment</p>
+						</div>
+						<div class="col-6 text-left">
+							<input id="numDoor" class="ml-20 q-press everything" type="number" min="0" name="numDoor">
+						</div>
+					</div>
+				</div>
+
+
+
+
+				<div class="container">
+					<div class="row q-hide" id="q-floor">
+						<div class="col-6 text-right">
+							<p id="numFloorText">Number of floor</p>
+						</div>
+						<div class="col-6 text-left">
+							<input id="numFloor" class="ml-20 q-press everything" type="number" min="0" name="numFloor">
+						</div>
+					</div>
+				</div>
+
+
+
+
+				<div class="container" >
+					<div class="row q-hide" id="q-basement">
+						<div class="col-6 text-right">
+							<p id="numBasementText">Number of Basement</p>
+						</div>
+						<div class="col-6 text-left">
+							<input id="numBasement" class="ml-20 q-press everything" type="number" min="0" name="numBasement">
+						</div>
+					</div>
+				</div>
+
+
+
+
+				<div class="container" >
+					<div class="row q-hide" id="q-parking">
+						<div class="col-6 text-right">
+							<p id="numParkingText">Number of Parking</p>
+						</div>
+						<div class="col-6 text-left">
+							<input id="numParking" class="ml-20 q-press everything" type="number" min="0" name="numParking">
+						</div>
+					</div>
+				</div>
+
+
+				<div class="container" >
+					<div class="row q-hide" id="q-maxPerson">
+						<div class="col-6 text-right">
+							<p id="numMaxPersonFloorText">Number of Maximum Person per Floor</p>
+						</div>
+						<div class="col-6 text-left">
+							<input id="numMaxPersonFloor" class="ml-20  q-press everything" type="number" min="0" name="numMPF">
+						</div>
+					</div>
+				</div>
+
+
+				<div class="container" >
+					<div class="row q-hide" id="q-hour">
+						<div class="col-6 text-right">
+							<p id="numActiveHourText">Number of Active Hours</p>
+						</div>
+						<div class="col-6 text-left">
+							<input id="numActiveHour" class="ml-20  q-press everything" type="number" min="0" max="24" name="numActiveHour">
+						</div>
+					</div>
+				</div>
+
+
+				<div class="container" >
+					<div class="row q-hide" id="q-demand">
+						<div class="col-6 text-right">
+							<p id="numDemandText">Number of Elevator Wanted</p>
+						</div>
+						<div class="col-6 text-left">
+							<input id="numDemand" class="ml-20 q-press everything" type="number" min="0" name="numDemand">
+						</div>
+					</div>
+				</div>
+
+					
+					
+
+				
+				<div class="text-center mt-30 ">
+					<h3>Model of elevator</h3>
+				</div>
+				
+
+
+				
+
+
+				
+				<div class="alternate pt-30">
+					<div class="container text-center ">
+						<div class="row">
+							<div class="col-5 radio-hide" id="q-maxPerson">
+								<div>
+									
+									<label class="mb-20">Standard
+									<input id="radioStandard" class="radio-price ml-8" type="radio" name="price" value="Standard"></label>
+									<p style="font-size: 12px;">Price per unit is: 7'565.00$<br>
+										Installation fee is: 10%
+									</p>
+									
+								</div>
+							</div>
+						
+						
+							<div class="col-2 radio-hide" id="q-maxPerson">
+								<div>
+									<label class="mb-20">Premium
+									<input id="radioPremium" class="radio-price ml-8" type="radio" name="price" value="Premium"></label>
+									<p style="font-size: 12px;">Price per unit is: 12'345.00$<br>
+										Installation fee is: 13%
+									</p>
+								</div>
+							</div>
+						
+							<div class="col-5 radio-hide " id="q-maxPerson">
+								<div>
+									<label class="mb-20">Excelium
+									<input id="radioExcelium" class="radio-price ml-8" type="radio" name="price" value="Excelium"></label>
+									<p style="font-size: 12px;">Price per unit is: 15'400.00$<br>
+										Installation fee is: 16%
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class="text-center mt-30 ">
+					<h3>Our suggestion and price</h3>
+					<hr>
+				</div>
+				<div class="text-center">
+					<div class="container">
+						<div class="row">
+							<h4 class="col-6 q-final everything" id="fPriceElev">Price of elevator: </h4>
+							<input  type="hidden" id="finalPriceElevator" name="finalPriceElevator">
+
+							<h4 class="col-6 q-final everything" id="fNumElev">Number of Elevator sugested: </h4>
+							<input  type="hidden" id="finalNumElev" name="finalNumberElevator">
+						</div>
+						<div class="row">
+							<h4 class="col-6 q-final everything" id="fInstPrice">Instalation fee: </h4>
+							<input  type="hidden" id="finalInstalationFee" name="finalInstalationFee">
+
+							<h4 class="col-6 q-final everything" id="fNumColumn">Number of Column needed: </h4>
+							<input  type="hidden" id="finalColumn" name="finalColumn">
+						</div>
+						<div class="row">
+							<h4 class="col-6 q-final everything" id="fTotalPrice">Total price: </h4>
+							<input  type="hidden" id="finalTotalPrice" name="finalTotalPrice">
+
+							<h4 class="col-6 q-final everything" id="fNumElevColumn">Number of elevator per Column: </h4>
+							<input  type="hidden" id="finalNumberElevatorColumn" name="finalNumberElevatorColumn">
+							<input type="hidden" id="pricePerElevator" name="pricePerElevator">
+						</div>
+					</div>
+            	</div>
+				<div class="text-center">
+					<div class="row pt-20">
+						<div class="col-6">
+							<label class="hide-end" for="fullName">Full Name: <input class="everything" id="fullName" type="text" name="fullName"></label>
+							
+						</div>
+						<div class="col-6">
+							<label class="hide-end" for="phoneNumber">Phone Number: <input class="everything" id="phoneNumber" type="text" name="phoneNumber"></label>
+							
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-6">
+							<label class="hide-end" for="comName">Company Name: <input class="everything" id="comName" type="text" name="comName"></label>
+							
+						</div>
+						<div class="col-6">
+							<label class="hide-end" for="email">Email: <input class="everything" id="email" type="text" name="email"></label>
+							
+						</div>
+					</div>
+					<div class="row pt-20">
+						<div class="col-3">
+						</div>
+						<div class="hide-end col-2 g-recaptcha" data-sitekey="<%=ENV["RECAPTCHA_SITE_KEY"]%>" data-callback="recaptchaCallback">
+							
+						</div>
+						<div class="col-2">
+							<div class="actions">
+								<button class="hide-end btn btn-dark btn-lg mt-12" id="submitBtn" disabled>Submit</button>
+							</div>
+						</div>
+						<div class="col-5">
+						</div>
+					</div>
+				
+				</div>
+			<% end %>
+
+				<!-- CONTACT -->
+				<section id="Call">
+					<div class="container">
+						<header class="text-center mb-60">
+							<h2>Contact Us</h2>
+							<p class="lead font-lato">You have a question? You would like more informations? Our phone service's is available 24/7.</p>
+							<a class="btn btn-secondary" href="#phone"> Contact us <i class="fa fa-angle-right"></i></a>
+							<hr />
+						</header>
+					</div>
+				</section>
+				
+			<!-- /CONTACT -->
+	
+
+
+
+			<!-- FOOTER -->
+			<footer id="footer">
+				<div class="container">
+
+
+					<div class="row">
+
+						<!-- col #1 -->
+						<div id="phone" class="col-md-8">
+
+							<h3 class="letter-spacing-1">WHY US?</h3>
+
+							<!-- Small Description -->
+							<p>
+								Rocket Elevators is offering you the best elevators and services that you can find on the market. Our employees work for your satisfaction and are there to answer your questions. Also, our prices are inevitably unbeatable .
+							</p>
+							<h2>1(581) 701-0303</h2>
+						</div>
+						<!-- /col #1 -->
+
+						<!-- col #2 -->
+						<div class="col-md-4">
+							<h3 class="letter-spacing-1">KEEP IN TOUCH</h3>
+
+							<!-- Newsletter Form -->
+							<p>Subscribe to Our Newsletter to get Important News & Offers</p>
+
+							<form class="validate" action="php/newsletter.php" method="post" data-success="Subscribed! Thank you!" data-toastr-position="bottom-right">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+									<input type="email" id="email" name="email" class="form-control required" placeholder="Enter your Email">
+									<span class="input-group-btn">
+										<a href="thankyou" class="btn btn-success">Subscribe</a>
+									</span>
+								</div>
+							</form>
+							<!-- /Newsletter Form -->
+
+
+						</div>
+						<!-- /col #2 -->
+
+					</div>
+
+
+				</div>
+
+			<!-- Terms and Privacy -->
+			<div class="copyright">
+				<div class="container">
+					<ul class="float-right m-0 list-inline mobile-block">
+		
+						<style>
+							/* Popup container - can be anything you want */
+							.popup {
+							  position: relative;
+							  display: inline-block;
+							  cursor: pointer;
+							  -webkit-user-select: none;
+							  -moz-user-select: none;
+							  -ms-user-select: none;
+							  user-select: none;
+							}
+							
+							/* The actual popup */
+							.popup .popuptext {
+							  visibility: hidden;
+							  width: 160px;
+							  background-color: #555;
+							  color: #fff;
+							  text-align: center;
+							  border-radius: 6px;
+							  padding: 8px 0;
+							  position: absolute;
+							  z-index: 1;
+							  bottom: 125%;
+							  left: 50%;
+							  margin-left: -80px;
+							}
+							
+							/* Popup arrow */
+							.popup .popuptext::after {
+							  content: "";
+							  position: absolute;
+							  top: 100%;
+							  left: 50%;
+							  margin-left: -5px;
+							  border-width: 5px;
+							  border-style: solid;
+							  border-color: #555 transparent transparent transparent;
+							}
+							
+							/* Toggle this class - hide and show the popup */
+							.popup .show {
+							  visibility: visible;
+							  -webkit-animation: fadeIn 1s;
+							  animation: fadeIn 1s;
+							}
+							
+							/* Add animation (fade in the popup) */
+							@-webkit-keyframes fadeIn {
+							  from {opacity: 0;} 
+							  to {opacity: 1;}
+							}
+							
+							@keyframes fadeIn {
+							  from {opacity: 0;}
+							  to {opacity:1 ;}
+							}
+							</style>
+						<li><div class="popup" onclick="myFunction()">Terms &amp; Conditions
+						<span class="popuptext" id="myPopup">Other than the content you own, under these Terms, Company Name and/or its licensors own all the intellectual property rights and materials contained in this Website.<br>You are granted limited license only for purposes of viewing the material contained on this Website.</span>
+							</div></li>
+							<li></li>
+							<li></li>
+							<li>&bull;</li>
+							<li></li>
+							<li></li>
+						<li><div class="popup" onclick="pop2()">Privacy
+						<span class="popuptext" id="popMy">Log and usage data. We may log information when you access and use the Services.<br> This may include your IP address, user-agent string, browser type, operating system, referral URLs, device information (e.g., device IDs), pages visited, links clicked, the requested URL, hardware settings, and search terms. <br> Except for the IP address used to create your account, Rocket Elevators Ltd will delete any IP addresses collected after 100 days.</span>
+						</div></li>
+					</ul>
+					&copy; All Rights Reserved, Company LTD
+				</div>
+			</div>
+
+		<!-- /Terms and Privacy -->
+			</footer>
+			<!-- /FOOTER -->
+
+		</div>
+		<!-- /wrapper -->
+
+
+		<!-- SCROLL TO TOP -->
+		<a href="#" id="toTop"></a>
+
+
+		<script type="text/javascript">
+			var recaptchachecked;
+			function recaptchaCallback() {
+				$("#submitBtn").removeClass("btn-dark");
+				$('#submitBtn').removeAttr('disabled');
+            	$("#submitBtn").addClass("btn-primary");
+				
+				//If we managed to get into this function it means that the user checked the checkbox.
+				recaptchachecked = true;
+			}
+		</script>
+		<!-- POPUP SCRIPTS -->
+		<script>
+			// When the user clicks on div, open the popup
+				function myFunction() {
+				var popup = document.getElementById("myPopup");
+				popup.classList.toggle("show");
+			}
+			// When the user clicks on div, open the popup
+			function pop2() {
+				var popup = document.getElementById("popMy");
+				popup.classList.toggle("show");
+			}
+		</script>
+		<script>var plugin_path = 'assets/plugins/';</script>
+		<%= javascript_include_tag 'contact', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'scripts', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'QuoteForm', media: 'all', 'data-turbolinks-track': 'reload' %>
+	</body>
+</html>
