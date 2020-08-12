@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_17_184819) do
+ActiveRecord::Schema.define(version: 2020_08_12_012843) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -204,6 +204,23 @@ ActiveRecord::Schema.define(version: 2020_07_17_184819) do
     t.index ["email"], name: "index_employees_on_email", unique: true
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
     t.index ["user_id"], name: "index_employees_on_user_id"
+  end
+
+  create_table "interventions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "Author", null: false
+    t.integer "CustomerID", null: false
+    t.integer "BuildingID", null: false
+    t.integer "BatteryID"
+    t.integer "ColumnID"
+    t.integer "ElevatorID"
+    t.integer "EmployeeID"
+    t.datetime "start_of_intervention"
+    t.datetime "end_of_intervention"
+    t.string "Result", default: "Incomplete"
+    t.string "Report"
+    t.string "Status", default: "Pending"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

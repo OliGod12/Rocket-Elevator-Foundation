@@ -42,7 +42,7 @@ class LeadsController < ApplicationController
 			end  
 			if res["classification"] == "NUDITY"
 
-				from = Email.new(email: 'samuel.chabot@live.ca')
+				from = Email.new(email: 'olivier.godbout12@gmail.com')
 				to = Email.new(email: "#{params[:email]}")
 				subject = "Warning of legal action!"
 				content = Content.new(type: 'text/html', value: "<html data-editor-version='2' class='sg-campaigns' xmlns='http://www.w3.org/1999/xhtml'><head>
@@ -229,7 +229,7 @@ class LeadsController < ApplicationController
 				@lead.Message = params[:message]
 				        # using SendGrid's Ruby Library
 				# https://github.com/sendgrid/sendgrid-ruby
-				from = Email.new(email: 'samuel.chabot@live.ca')
+				from = Email.new(email: 'olivier.godbout12@gmail.com')
 				to = Email.new(email: "#{params[:email]}")
 				subject = "Confirmation about project #{params[:project]}"
 				content = Content.new(type: 'text/html', value: "<html data-editor-version='2' class='sg-campaigns' xmlns='http://www.w3.org/1999/xhtml'><head>
