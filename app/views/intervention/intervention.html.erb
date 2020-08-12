@@ -1,0 +1,206 @@
+<!-- INTERVENTION FORM-->
+<section id="intervention">
+	<div class="heading-title heading-dotted text-center">
+		<h1> Interventions </h1>
+	</div>
+
+	<fieldset>
+        <input type="hidden" name="action" value="intervention_send" />
+
+		<div class="col-md-6 mx-auto text-center offset-md-3 ">
+			<%= collection_select(:intervention, :customer_id, Customer.order(:full_name_company_contact), :id, :full_name_company_contact, {prompt: 'Select a customer'}) %>
+		</div><br><br>
+
+		<div class="col-md-6 mx-auto text-center text-blue offset-md-3">
+			<%= collection_select(:intervention, :building_id, Building.order(:id), :id, :id, {prompt: 'Select a building'}) %> 
+		</div><br><br>
+	
+		<div class="col-md-6 mx-auto text-center text-blue offset-md-3">
+			<%= collection_select(:intervention, :battery_id, Battery.order(:building_id), :id, :building_id, {prompt: 'Select a battery'}) %> 
+		</div><br><br>
+		
+		<div class="col-md-6 mx-auto text-center text-blue offset-md-3">
+			<%= collection_select(:intervention, :column_id, Column.order(:battery_id), :id, :battery_id, {prompt: 'Select a column'})  %>
+		</div><br><br>
+	
+		<div class="col-md-6 mx-auto text-center text-blue offset-md-3">
+			<%= collection_select(:intervention, :elevator_id, Elevator.order(:column_id), :id, :column_id, {prompt: 'Select an elevator'}) %>
+		</div><br><br>
+		
+		<div class="col-md-12 mx-auto text-center text-blue offset-md-3">
+			<%= collection_select(:intervention, :employee_id, Employee.order(:first_name), :id, :first_name, {prompt: 'Select an employee'}) %>
+		</div><br><br>
+
+		<div class="col-md-12">
+			Description
+				<textarea maxlength="1000" rows="8" class="form-control" name="intervention[description]" id="intervention:message"></textarea>
+		</div>
+
+		<div class="col-6">
+			<div class="actions">
+				<button class="btn-primary btn-lg mt-12" id="submitBtn"> Submit </button>
+			</div>
+		</div>
+ 
+
+	</fieldset>
+</section>
+
+
+
+
+
+
+<!-- FOOTER -->
+<footer id="footer">
+	<div class="container">
+
+
+		<div class="row">
+
+			<!-- col #1 -->
+			<div class="col-md-8">
+
+				<h3 class="letter-spacing-1">WHY US?</h3>
+
+				<!-- Small Description -->
+				<p>
+					Rocket Elevators is offering you the best elevators and services that you can find on the market. Also, our prices are inevitably unbeatable .
+				</p>
+				<h2>1(581) 701-0303</h2>
+			</div>
+			<!-- /col #1 -->
+
+			<!-- col #2 -->
+			<div class="col-md-4">
+				<h3 class="letter-spacing-1">KEEP IN TOUCH</h3>
+
+				<!-- Newsletter Form -->
+				<p>Subscribe to Our Newsletter to get Important News & Offers</p>
+
+				<form class="validate" action="php/newsletter.php" method="post" data-success="Subscribed! Thank you!" data-toastr-position="bottom-right">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+						<input type="email" id="email" name="email2" class="form-control required" placeholder="Enter your Email">
+						<span class="input-group-btn">
+							<a href="thankyou" class="btn btn-success">Subscribe</a>
+						</span>
+					</div>
+				</form>
+				<!-- /Newsletter Form -->
+
+
+			</div>
+			<!-- /col #2 -->
+
+		</div>
+
+
+	</div>
+
+	<div class="copyright">
+		<div class="container">
+			<ul class="float-right m-0 list-inline mobile-block">
+
+				<style>
+					/* Popup container - can be anything you want */
+					.popup {
+					  position: relative;
+					  display: inline-block;
+					  cursor: pointer;
+					  -webkit-user-select: none;
+					  -moz-user-select: none;
+					  -ms-user-select: none;
+					  user-select: none;
+					}
+					
+					/* The actual popup */
+					.popup .popuptext {
+					  visibility: hidden;
+					  width: 160px;
+					  background-color: #555;
+					  color: #fff;
+					  text-align: center;
+					  border-radius: 6px;
+					  padding: 8px 0;
+					  position: absolute;
+					  z-index: 1;
+					  bottom: 125%;
+					  left: 50%;
+					  margin-left: -80px;
+					}
+					
+					/* Popup arrow */
+					.popup .popuptext::after {
+					  content: "";
+					  position: absolute;
+					  top: 100%;
+					  left: 50%;
+					  margin-left: -5px;
+					  border-width: 5px;
+					  border-style: solid;
+					  border-color: #555 transparent transparent transparent;
+					}
+					
+					/* Toggle this class - hide and show the popup */
+					.popup .show {
+					  visibility: visible;
+					  -webkit-animation: fadeIn 1s;
+					  animation: fadeIn 1s;
+					}
+					
+					/* Add animation (fade in the popup) */
+					@-webkit-keyframes fadeIn {
+					  from {opacity: 0;} 
+					  to {opacity: 1;}
+					}
+					
+					@keyframes fadeIn {
+					  from {opacity: 0;}
+					  to {opacity:1 ;}
+					}
+					</style>
+				<li><div class="popup" onclick="myFunction()">Terms &amp; Conditions
+				<span class="popuptext" id="myPopup">Other than the content you own, under these Terms, Company Name and/or its licensors own all the intellectual property rights and materials contained in this Website.<br>You are granted limited license only for purposes of viewing the material contained on this Website.</span>
+				</div></li>
+					<li></li>
+					<li></li>
+					<li>&bull;</li>
+					<li></li>
+					<li></li>
+				<li><div class="popup" onclick="pop2()">Privacy
+				<span class="popuptext" id="popMy">Log and usage data. We may log information when you access and use the Services.<br> This may include your IP address, user-agent string, browser type, operating system, referral URLs, device information (e.g., device IDs), pages visited, links clicked, the requested URL, hardware settings, and search terms. <br> Except for the IP address used to create your account, Rocket Elevators Ltd will delete any IP addresses collected after 100 days.</span>
+				</div></li>
+			</ul>
+			&copy; All Rights Reserved, Company LTD
+		</div>
+	</div>
+
+</footer>
+<!-- /FOOTER -->
+
+		</div>
+		<!-- /wrapper -->
+
+
+		<!-- SCROLL TO TOP -->
+		<a href="#" id="toTop"></a>
+		<!-- POPUP SCRIPTS -->
+		<script>
+			// When the user clicks on div, open the popup
+				function myFunction() {
+				var popup = document.getElementById("myPopup");
+				popup.classList.toggle("show");
+			}
+			// When the user clicks on div, open the popup
+			function pop2() {
+				var popup = document.getElementById("popMy");
+				popup.classList.toggle("show");
+			}
+		</script>
+		<script>var plugin_path = 'assets/plugins/';</script>
+		<%= javascript_include_tag 'contact', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'scripts', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+	</body>
+</html>

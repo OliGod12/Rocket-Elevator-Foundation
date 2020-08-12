@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '404' => 'home#404'
   authenticated :user, ->(user) { user.admin? } do
     mount Blazer::Engine, at: "blazer"
+    get 'intervention' => 'intervention#intervention'
   end
   
   
